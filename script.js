@@ -99,7 +99,6 @@ function updateNote() {
         const noteId = editingPopup.getAttribute('data-note-id');
         let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-        // Find the note to update
         const updatedNotes = notes.map(note => {
             if (note.id == noteId) {
                 return { id: note.id, text: noteText };
@@ -107,13 +106,10 @@ function updateNote() {
             return note;
         });
 
-        // Update the notes in local storage
         localStorage.setItem('notes', JSON.stringify(updatedNotes));
 
-        // Close the editing popup
         editingPopup.remove();
 
-        // Refresh the displayed notes
         displayNotes();
     }
 }
